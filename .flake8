@@ -1,0 +1,10 @@
+[flake8]
+ignore = E501, E265, F811, BLK100, T003, E722, W503, E203, A003
+ban-relative-imports = true
+max-line-length = 120
+inline-quotes = double
+exclude =
+      .git,
+      __pycache__,
+      venv
+      env
