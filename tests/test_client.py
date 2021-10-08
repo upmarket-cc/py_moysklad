@@ -5,12 +5,12 @@ from py_moysklad.exceptions import NoCredentialsException
 
 
 @pytest.mark.parametrize(
-    ('token', 'password', 'login'),
+    ("token", "password", "login"),
     [
-        (None, 'passw0rd', 'login'),
-        ('tok3n', None, 'login'),
-        (None, None, 'login'),
-        ('tok3n', 'passw0rd', None),
+        (None, "passw0rd", "login"),
+        ("tok3n", None, "login"),
+        (None, None, "login"),
+        ("tok3n", "passw0rd", None),
         (None, None, None),
     ],
 )
