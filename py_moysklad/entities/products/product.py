@@ -1,7 +1,9 @@
 from datetime import datetime
 from decimal import Decimal
 from enum import Enum
-from typing import List
+from typing import List, Optional
+
+from pydantic import BaseModel
 
 from py_moysklad.entities.agents.agent import Agent
 from py_moysklad.entities.agents.employee import Employee
@@ -28,14 +30,14 @@ class TrackingType(Enum):
     OTP = "OTP"
 
 
-class AlcoholEntity:
+class AlcoholEntity(BaseModel):
     excise: bool
     type: int
     strength: Decimal
     volume: Decimal
 
 
-class ProductPack:
+class ProductPack(BaseModel):
     id: str
     uom: Uom
     quantity: Decimal
@@ -43,32 +45,32 @@ class ProductPack:
 
 
 class Product(AbstractProduct):
-    owner: Employee
-    shared: bool
+    # owner: Employee
+    # shared: bool
     group: Group
-    syncId: str
-    updated: datetime
-    externalCode: str
-    archived: bool
-    pathName: str
-    images: List[Image]
-    supplier: Agent
-    attributes: List[Attribute]
-    country: Country
-    article: str
-    tobacco: bool
-    weight: Decimal
-    volume: Decimal
-    packs: List[ProductPack]
-    alcoholic: AlcoholEntity
-    variantsCount: int
-    isSerialTrackable: bool
-    weighed: bool
-    things: List[str]
-    minimumBalance: Decimal
-    ppeType: str
-    partialDisposal: bool
-    trackingType: TrackingType
-    tnved: str
-    paymentItemType: GoodPaymentItemType
-    taxSystem: GoodTaxSystem
+    # syncId: str
+    # updated: datetime
+    # externalCode: str
+    # archived: bool
+    # pathName: str
+    # images: List[Image]
+    # supplier: Agent
+    # attributes: List[Attribute]
+    # country: Country
+    # article: str
+    # tobacco: bool
+    # weight: Decimal
+    # volume: Decimal
+    # packs: List[ProductPack]
+    # alcoholic: AlcoholEntity
+    # variantsCount: int
+    # isSerialTrackable: bool
+    # weighed: bool
+    # things: List[str]
+    # minimumBalance: Decimal
+    # ppeType: str
+    # partialDisposal: bool
+    # trackingType: TrackingType
+    # tnved: str
+    # paymentItemType: GoodPaymentItemType
+    # taxSystem: GoodTaxSystem

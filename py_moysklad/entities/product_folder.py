@@ -7,7 +7,6 @@ from py_moysklad.entities.meta_entity import MetaEntity
 from py_moysklad.entities.products.good_tax_system import GoodTaxSystem
 
 
-@dataclass
 class ProductFolder(MetaEntity):
     owner: Employee
     pathName: str

@@ -1,8 +1,11 @@
-from dataclasses import dataclass
+from typing import Generic, List, TypeVar
 
 from py_moysklad.entities.meta_entity import MetaEntity
 
 
-@dataclass
-class ListEntity(MetaEntity):
-    pass
+T = TypeVar('T', bound=MetaEntity)
+
+
+class ListEntity(MetaEntity, Generic[T]):
+    context: dict  # FIXME
+    rows: List[T]

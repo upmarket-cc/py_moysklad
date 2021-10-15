@@ -10,13 +10,13 @@ from py_moysklad.entities.uom import Uom
 
 class AbstractProduct(Assortment):
     code: str
-    description: str
-    vat: int
-    effectiveVat: int
-    productFolder: ProductFolder
-    minPrice: Price
-    buyPrice: Price
-    salePrices: List[Price]
-    uom: Uom
-    barcodes: List[Barcode]
-    files: List[AttachedFile]
+    # description: str
+    # vat: int
+    # effectiveVat: int
+    # productFolder: ProductFolder
+    # minPrice: Price
+    # buyPrice: Price
+    # salePrices: List[Price]
+    # uom: Uom
+    # barcodes: List[Barcode]
+    # files: List[AttachedFile]

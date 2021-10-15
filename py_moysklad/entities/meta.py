@@ -1,13 +1,14 @@
-from dataclasses import dataclass
+from typing import Optional
+
+from pydantic import BaseModel
 
 
-@dataclass
-class Meta:
+class Meta(BaseModel):
     href: str
-    metadata_href: str
+    metadataHref: str
     type: str  # noqa: VNE003, FIXME: ENUM
-    media_type: str
-    uuid_href: str
-    size: int
-    limit: int
-    offset: int
+    mediaType: Optional[str]
+    uuidHref: Optional[str]
+    size: Optional[int]
+    limit: Optional[int]
+    offset: Optional[int]

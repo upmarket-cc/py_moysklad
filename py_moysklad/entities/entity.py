@@ -1,8 +1,7 @@
-import copy
-from abc import ABC
+from pydantic.generics import GenericModel
 
 
-class Entity(ABC):
-    @classmethod
-    def clone(cls, original: "Entity") -> "Entity":
-        return copy.deepcopy(original)
+class Entity(GenericModel):
+    class Config:
+        arbitrary_types_allowed = True
+
