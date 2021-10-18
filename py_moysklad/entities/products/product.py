@@ -16,6 +16,7 @@ from py_moysklad.entities.products.abstract_product import AbstractProduct
 from py_moysklad.entities.products.good_payment_item_type import GoodPaymentItemType
 from py_moysklad.entities.products.good_tax_system import GoodTaxSystem
 from py_moysklad.entities.uom import Uom
+from py_moysklad.responses.list_entity import ListEntity
 
 
 class TrackingType(Enum):
@@ -45,32 +46,32 @@ class ProductPack(BaseModel):
 
 
 class Product(AbstractProduct):
-    # owner: Employee
-    # shared: bool
+    owner: Employee
+    shared: bool
     group: Group
-    # syncId: str
-    # updated: datetime
-    # externalCode: str
-    # archived: bool
-    # pathName: str
-    # images: List[Image]
-    # supplier: Agent
-    # attributes: List[Attribute]
+    # sync_id: str
+    updated: datetime
+    external_code: str
+    archived: bool
+    path_name: str
+    images: Optional[ListEntity[Image]]
+    supplier: Optional[Agent]
+    attributes: Optional[List[Attribute]]
     # country: Country
-    # article: str
+    article: str
     # tobacco: bool
-    # weight: Decimal
-    # volume: Decimal
+    weight: Decimal
+    volume: Decimal
     # packs: List[ProductPack]
     # alcoholic: AlcoholEntity
-    # variantsCount: int
-    # isSerialTrackable: bool
+    variants_count: int
+    # is_serial_trackable: bool
     # weighed: bool
     # things: List[str]
-    # minimumBalance: Decimal
-    # ppeType: str
-    # partialDisposal: bool
-    # trackingType: TrackingType
+    # minimum_balance: Decimal
+    # ppe_type: str
+    # partial_disposal: bool
+    # tracking_type: TrackingType
     # tnved: str
-    # paymentItemType: GoodPaymentItemType
-    # taxSystem: GoodTaxSystem
+    # payment_item_type: GoodPaymentItemType
+    # tax_system: GoodTaxSystem

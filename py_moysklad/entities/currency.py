@@ -1,19 +1,18 @@
-from dataclasses import dataclass
 from decimal import Decimal
+from typing import Optional
 
 from py_moysklad.entities.meta_entity import MetaEntity
 
 
-@dataclass
 class Currency(MetaEntity):
-    fullName: str
-    rate: Decimal
+    full_name: Optional[str]
+    rate: Optional[Decimal]
     # private MultiplicityType multiplicity;
     # private UpdateType rateUpdateType;
-    indirect: bool
-    code: str
-    isoCode: str
-    system: bool
+    indirect: Optional[bool]
+    code: Optional[str]
+    isoCode: Optional[str]
+    system: Optional[bool]
     # private Unit majorUnit;
     # private Unit minorUnit;
-    archived: bool
+    archived: Optional[bool]

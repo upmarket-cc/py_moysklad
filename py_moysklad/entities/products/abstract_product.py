@@ -1,4 +1,6 @@
-from typing import List
+from typing import List, Optional
+
+from pydantic import validator
 
 from py_moysklad.entities.assortment import Assortment
 from py_moysklad.entities.attached_file import AttachedFile
@@ -10,13 +12,22 @@ from py_moysklad.entities.uom import Uom
 
 class AbstractProduct(Assortment):
     code: str
-    # description: str
-    # vat: int
-    # effectiveVat: int
+    description: str
+    vat: int
+    effective_vat: int
     # productFolder: ProductFolder
-    # minPrice: Price
-    # buyPrice: Price
-    # salePrices: List[Price]
-    # uom: Uom
-    # barcodes: List[Barcode]
+    min_price: Optional[Price]
+    buy_price: Price
+    sale_prices: List[Price]
+    uom: Uom
+    barcodes: List[Barcode]
     # files: List[AttachedFile]
+
+    @validator("barcodes", pre=True, always=True)
+    def set_barcodes(cls, value, *, values, **kwargs):
+        new_value = list()
+        for val in value:
+            key = list(val.keys())[0]
+            value = val[key]
+            new_value.append({"type": key.upper(), "value": value})
+        return new_value
