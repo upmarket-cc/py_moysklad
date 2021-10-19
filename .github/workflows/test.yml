@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version:
+          - "3.9"
+          - "3.10"
       fail-fast: false
 
     steps:
@@ -42,5 +44,3 @@ jobs:
         run: poetry install
       - name: Test
         run: poetry run bash scripts/test.sh
-      - name: Pre-commit
-        run: poetry run pre-commit run --all-files
