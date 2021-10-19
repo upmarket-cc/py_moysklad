@@ -7,7 +7,7 @@ if typing.TYPE_CHECKING:
     from py_moysklad.client import ApiClient
 
 
-class EntityClientBase:
+class GenericEntityClient:
     entity_class: typing.Type[MetaEntity]
     endpoints: dict
 
@@ -37,7 +37,7 @@ class BaseEndpoint:
         return api.client
 
 
-class GetByIdEndpoint(BaseEndpoint):
+class RetrieveMixin(BaseEndpoint):
     def get(self, entity_id: str = None):
         if entity_id is None:
             response = self.client.get(endpoint=self.get_endpoint("list"))
@@ -46,19 +46,19 @@ class GetByIdEndpoint(BaseEndpoint):
         return self.get_entity_class()(**response)
 
 
-class PostEndpoint(BaseEndpoint):
+class CreateMixin(BaseEndpoint):
     def create(self, body: dict):
         response = self.client.post(endpoint=self.get_endpoint("create"), body=body)
         return self.get_entity_class()(**response)
 
 
-class DeleteByIdEndpoint(BaseEndpoint):
+class DeleteMixin(BaseEndpoint):
     def delete(self, entity: typing.Union[MetaEntity, int]) -> None:
         if isinstance(entity, MetaEntity):
             entity_id = entity.id
         elif isinstance(entity, int):
             entity_id = entity
         else:
-            raise Exception()
+            raise Exception()  # FIXME: add custom exception
 
         return self.client.delete(endpoint=self.get_endpoint("delete").format(id=entity_id))

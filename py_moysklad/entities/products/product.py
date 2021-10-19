@@ -42,7 +42,7 @@ class ProductPack(BaseModel):
     id: str
     uom: Uom
     quantity: Decimal
-    barcodes: List[Barcode]
+    barcodes: Optional[List[Barcode]]
 
 
 class Product(AbstractProduct):
@@ -59,19 +59,19 @@ class Product(AbstractProduct):
     attributes: Optional[List[Attribute]]
     # country: Country
     article: str
-    # tobacco: bool
+    tobacco: Optional[bool]
     weight: Decimal
     volume: Decimal
-    # packs: List[ProductPack]
-    # alcoholic: AlcoholEntity
+    packs: Optional[List[ProductPack]]
+    alcoholic: Optional[AlcoholEntity]
     variants_count: int
-    # is_serial_trackable: bool
-    # weighed: bool
-    # things: List[str]
+    is_serial_trackable: Optional[bool]
+    weighed: Optional[bool]
+    things: Optional[List[str]]
     # minimum_balance: Decimal
     # ppe_type: str
     # partial_disposal: bool
-    # tracking_type: TrackingType
+    tracking_type: Optional[TrackingType]
     # tnved: str
     # payment_item_type: GoodPaymentItemType
     # tax_system: GoodTaxSystem

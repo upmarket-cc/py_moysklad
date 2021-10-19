@@ -1,8 +1,6 @@
 from datetime import datetime
 from decimal import Decimal
 
-from py_moysklad.entities.products.product import Product
-
 
 def test_serialize_metadata(client, mock_http_client, read_fixture):
     mock_http_client.get.return_value = read_fixture("entities/product_list")
@@ -16,6 +14,21 @@ def test_serialize_metadata(client, mock_http_client, read_fixture):
     assert got.meta.size == 5
     assert got.meta.limit == 1000
     assert got.meta.offset == 0
+
+
+def test_serialize_context(client, mock_http_client, read_fixture):
+    mock_http_client.get.return_value = read_fixture("entities/product_list")
+
+    got = client.entity().product().get()
+
+    mock_http_client.get.assert_called_with("localhost/products", params=None)
+    assert (
+            got.context.employee.meta.href
+            == "https://online.moysklad.ru/api/remap/1.2/context/employee"
+    )
+    assert got.context.employee.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/employee/metadata"
+    assert got.context.employee.meta.type == "employee"
+    assert got.context.employee.meta.media_type == "application/json"
 
 
 def test_serialize_list_of_products_2(client, mock_http_client, read_fixture):

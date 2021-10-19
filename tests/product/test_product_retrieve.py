@@ -51,6 +51,11 @@ def test_serialize_list_of_products_2(client, mock_http_client, read_fixture):
     assert got.weight == Decimal("200")
     assert got.volume == Decimal("300")
     assert got.variants_count == 0
+    assert got.is_serial_trackable is True
+    assert got.tracking_type.value == 'NOT_TRACKED'
+    assert got.things[0] == 'F564X056'
+    assert got.weighed is None
+    assert got.tobacco is None
 
 
 def test_serialize_owner(client, mock_http_client, read_fixture):
@@ -81,6 +86,23 @@ def test_serialize_group(client, mock_http_client, read_fixture):
     assert got.group.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/group/metadata"
     assert got.group.meta.type == "group"
     assert got.group.meta.media_type == "application/json"
+
+
+def test_serialize_packs(client, mock_http_client, read_fixture):
+    mock_http_client.get.return_value = read_fixture("entities/product")
+
+    got = client.entity().product().get("d950551c-2c7f-11e6-8a84-bae50000000b")
+
+    mock_http_client.get.assert_called_with("localhost/products/d950551c-2c7f-11e6-8a84-bae50000000b", params=None)
+    assert got.packs[0].id == "c6bdee6f-2c83-11e6-8a84-bae5000000a4"
+    assert got.packs[0].quantity == 35
+    assert (
+            got.packs[0].uom.meta.href
+            == "https://online.moysklad.ru/api/remap/1.2/entity/uom/c6b91d63-2c83-11e6-8a84-bae5000000a1"
+    )
+    assert got.packs[0].uom.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/uom/metadata"
+    assert got.packs[0].uom.meta.type == "uom"
+    assert got.packs[0].uom.meta.media_type == "application/json"
 
 
 def test_serialize_uom(client, mock_http_client, read_fixture):
