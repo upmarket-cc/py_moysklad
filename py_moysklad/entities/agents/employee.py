@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from datetime import datetime
 
@@ -10,24 +10,24 @@ from py_moysklad.entities.image import Image
 
 
 class Employee(Agent):
-    owner: "Employee"
-    shared: bool
-    lastName: str
-    externalCode: str
-    shortFio: str
-    created: datetime
-    fullName: str
-    archived: bool
-    uid: str
-    cashiers: List[Cashier]
-    updated: datetime
-    email: str
-    group: Group
-    description: str
-    phone: str
-    firstName: str
-    middleName: str
-    attributes: List[Attribute]
-    image: Image
-    inn: str
-    position: str
+    owner: Optional["Employee"]
+    shared: Optional[bool]
+    lastName: Optional[str]
+    externalCode: Optional[str]
+    shortFio: Optional[str]
+    created: Optional[datetime]
+    fullName: Optional[str]
+    archived: Optional[bool]
+    uid: Optional[str]
+    cashiers: Optional[List[Cashier]]
+    updated: Optional[datetime]
+    email: Optional[str]
+    group: Optional[Group]
+    description: Optional[str]
+    phone: Optional[str]
+    firstName: Optional[str]
+    middleName: Optional[str]
+    attributes: Optional[List[Attribute]]
+    image: Optional[Image]
+    inn: Optional[str]
+    position: Optional[str]

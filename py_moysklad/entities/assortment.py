@@ -1,5 +1,5 @@
 from py_moysklad.entities.meta_entity import MetaEntity
 
 
-class Agent(MetaEntity):
+class Assortment(MetaEntity):
     pass

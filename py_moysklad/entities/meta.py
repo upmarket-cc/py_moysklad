@@ -1,13 +1,19 @@
-from dataclasses import dataclass
+from typing import Optional
+
+from pydantic import BaseModel
+
+from py_moysklad.entities.entity import to_camelcase
 
 
-@dataclass
-class Meta:
-    href: str
-    metadata_href: str
-    type: str  # noqa: VNE003, FIXME: ENUM
-    media_type: str
-    uuid_href: str
-    size: int
-    limit: int
-    offset: int
+class Meta(BaseModel):
+    href: Optional[str]
+    metadata_href: Optional[str]
+    type: Optional[str]  # noqa: VNE003, FIXME: ENUM
+    media_type: Optional[str]
+    uuid_href: Optional[str]
+    size: Optional[int]
+    limit: Optional[int]
+    offset: Optional[int]
+
+    class Config:
+        alias_generator = to_camelcase

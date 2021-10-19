@@ -1,11 +1,11 @@
-from abc import ABC
+from typing import Optional
 
 from py_moysklad.entities.entity import Entity
 from py_moysklad.entities.meta import Meta
 
 
-class MetaEntity(ABC, Entity):
-    id: str  # noqa: VNE003
-    accountId: str
-    name: str
-    meta: Meta
+class MetaEntity(Entity):
+    id: Optional[str]  # noqa: VNE003
+    account_id: Optional[str]
+    name: Optional[str]
+    meta: Optional[Meta]
