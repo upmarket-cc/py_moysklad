@@ -395,7 +395,7 @@ http2 = ["h2 (>=3,<5)"]
 
 [[package]]
 name = "httpx"
-version = "0.19.0"
+version = "0.20.0"
 description = "The next generation HTTP client."
 category = "dev"
 optional = false
@@ -410,6 +410,7 @@ sniffio = "*"
 
 [package.extras]
 brotli = ["brotlicffi", "brotli"]
+cli = ["click (>=8.0.0,<9.0.0)", "rich (>=10.0.0,<11.0.0)", "pygments (>=2.0.0,<3.0.0)"]
 http2 = ["h2 (>=3,<5)"]
 
 [[package]]
@@ -652,18 +653,18 @@ pytest = ">=3.10"
 
 [[package]]
 name = "pytest-httpx"
-version = "0.13.0"
+version = "0.14.0"
 description = "Send responses to httpx."
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-httpx = ">=0.19.0,<0.20.0"
+httpx = ">=0.20.0,<0.21.0"
 pytest = ">=6.0.0,<7.0.0"
 
 [package.extras]
-testing = ["pytest-asyncio (>=0.15.0,<0.16.0)", "pytest-cov (>=2.0.0,<3.0.0)"]
+testing = ["pytest-asyncio (>=0.16.0,<0.17.0)", "pytest-cov (>=3.0.0,<4.0.0)"]
 
 [[package]]
 name = "pytest-icdiff"
@@ -875,7 +876,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c1ecd78aebe8234c39efcd07848c58a6e814dbbdea1ad223e747beab4607ce5c"
+content-hash = "d2807990a25552e25995d6fb8bcc9ea7b3c6c23d467eef8a871fba3512de47a0"
 
 [metadata.files]
 anyio = [
@@ -1037,8 +1038,8 @@ httpcore = [
     {file = "httpcore-0.13.7.tar.gz", hash = "sha256:036f960468759e633574d7c121afba48af6419615d36ab8ede979f1ad6276fa3"},
 ]
 httpx = [
-    {file = "httpx-0.19.0-py3-none-any.whl", hash = "sha256:9bd728a6c5ec0a9e243932a9983d57d3cc4a87bb4f554e1360fce407f78f9435"},
-    {file = "httpx-0.19.0.tar.gz", hash = "sha256:92ecd2c00c688b529eda11cedb15161eaf02dee9116712f621c70d9a40b2cdd0"},
+    {file = "httpx-0.20.0-py3-none-any.whl", hash = "sha256:33af5aad9bdc82ef1fc89219c1e36f5693bf9cd0ebe330884df563445682c0f8"},
+    {file = "httpx-0.20.0.tar.gz", hash = "sha256:09606d630f070d07f9ff28104fbcea429ea0014c1e89ac90b4d8de8286c40e7b"},
 ]
 icdiff = [
     {file = "icdiff-2.0.4.tar.gz", hash = "sha256:c72572e5ce087bc7a7748af2664764d4a805897caeefb665bdc12677fefb2212"},
@@ -1147,8 +1148,8 @@ pytest-forked = [
     {file = "pytest_forked-1.3.0-py2.py3-none-any.whl", hash = "sha256:dc4147784048e70ef5d437951728825a131b81714b398d5d52f17c7c144d8815"},
 ]
 pytest-httpx = [
-    {file = "pytest_httpx-0.13.0-py3-none-any.whl", hash = "sha256:6a5f931768bc0a00dc4d3073a9fe82f662c32a6d57fd20c14cb944d96b6d9273"},
-    {file = "pytest_httpx-0.13.0.tar.gz", hash = "sha256:3dc8f0deb582b0ab1b042fac0c9a401cd32de3d76cddfbeb1aa0d211107cc9ea"},
+    {file = "pytest_httpx-0.14.0-py3-none-any.whl", hash = "sha256:be64ac645f014289d20f3a89e2985b065d52dbfea187cfa81c398323218bebc3"},
+    {file = "pytest_httpx-0.14.0.tar.gz", hash = "sha256:26132dee03213bc9edd2cae4c736d161ed871f2893921752a36da3de691b48a4"},
 ]
 pytest-icdiff = [
     {file = "pytest-icdiff-0.5.tar.gz", hash = "sha256:3a14097f4385665cb04330e6ae09a3dd430375f717e94482af6944470ad5f100"},
