@@ -10,7 +10,9 @@ def test_serialize_metadata(client, mock_http_client, read_fixture):
     got = client.entity().product().get("d950551c-2c7f-11e6-8a84-bae50000000b")
 
     mock_http_client.get.assert_called_with("localhost/products/d950551c-2c7f-11e6-8a84-bae50000000b", params=None)
-    assert got.meta.href == "https://online.moysklad.ru/api/remap/1.2/entity/product/d950551c-2c7f-11e6-8a84-bae50000000b"
+    assert (
+        got.meta.href == "https://online.moysklad.ru/api/remap/1.2/entity/product/d950551c-2c7f-11e6-8a84-bae50000000b"
+    )
     assert got.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/product/metadata"
     assert got.meta.type == "product"
     assert got.meta.size is None
@@ -25,8 +27,7 @@ def test_serialize_list_of_products_2(client, mock_http_client, read_fixture):
 
     mock_http_client.get.assert_called_with("localhost/products/d950551c-2c7f-11e6-8a84-bae50000000b", params=None)
     assert (
-        got.meta.href
-        == "https://online.moysklad.ru/api/remap/1.2/entity/product/d950551c-2c7f-11e6-8a84-bae50000000b"
+        got.meta.href == "https://online.moysklad.ru/api/remap/1.2/entity/product/d950551c-2c7f-11e6-8a84-bae50000000b"
     )
     assert got.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/product/metadata"
     assert got.meta.type == "product"
@@ -52,8 +53,8 @@ def test_serialize_list_of_products_2(client, mock_http_client, read_fixture):
     assert got.volume == Decimal("300")
     assert got.variants_count == 0
     assert got.is_serial_trackable is True
-    assert got.tracking_type.value == 'NOT_TRACKED'
-    assert got.things[0] == 'F564X056'
+    assert got.tracking_type.value == "NOT_TRACKED"
+    assert got.things[0] == "F564X056"
     assert got.weighed is None
     assert got.tobacco is None
 
@@ -97,8 +98,8 @@ def test_serialize_packs(client, mock_http_client, read_fixture):
     assert got.packs[0].id == "c6bdee6f-2c83-11e6-8a84-bae5000000a4"
     assert got.packs[0].quantity == 35
     assert (
-            got.packs[0].uom.meta.href
-            == "https://online.moysklad.ru/api/remap/1.2/entity/uom/c6b91d63-2c83-11e6-8a84-bae5000000a1"
+        got.packs[0].uom.meta.href
+        == "https://online.moysklad.ru/api/remap/1.2/entity/uom/c6b91d63-2c83-11e6-8a84-bae5000000a1"
     )
     assert got.packs[0].uom.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/uom/metadata"
     assert got.packs[0].uom.meta.type == "uom"
@@ -112,8 +113,7 @@ def test_serialize_uom(client, mock_http_client, read_fixture):
 
     mock_http_client.get.assert_called_with("localhost/products/d950551c-2c7f-11e6-8a84-bae50000000b", params=None)
     assert (
-        got.uom.meta.href
-        == "https://online.moysklad.ru/api/remap/1.2/entity/uom/19f1edc0-fc42-4001-94cb-c9ec9c62ec10"
+        got.uom.meta.href == "https://online.moysklad.ru/api/remap/1.2/entity/uom/19f1edc0-fc42-4001-94cb-c9ec9c62ec10"
     )
     assert got.uom.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/uom/metadata"
     assert got.uom.meta.type == "uom"
@@ -130,10 +130,7 @@ def test_serialize_supplier(client, mock_http_client, read_fixture):
         got.supplier.meta.href
         == "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/6313d1e7-2c7f-11e6-8a84-bae500000051"
     )
-    assert (
-        got.supplier.meta.metadata_href
-        == "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/metadata"
-    )
+    assert got.supplier.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/metadata"
     assert got.supplier.meta.type == "counterparty"
     assert got.supplier.meta.media_type == "application/json"
 
@@ -168,8 +165,7 @@ def test_serialize_min_price(client, mock_http_client, read_fixture):
         == "https://online.moysklad.ru/api/remap/1.2/entity/currency/10772c12-36e7-11e7-8a7f-40d000000097"
     )
     assert (
-        got.min_price.currency.meta.metadata_href
-        == "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata"
+        got.min_price.currency.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata"
     )
     assert got.min_price.currency.meta.type == "currency"
     assert got.min_price.currency.meta.media_type == "application/json"
@@ -187,8 +183,7 @@ def test_serialize_buy_price(client, mock_http_client, read_fixture):
         == "https://online.moysklad.ru/api/remap/1.2/entity/currency/6314188d-2c7f-11e6-8a84-bae500000055"
     )
     assert (
-        got.buy_price.currency.meta.metadata_href
-        == "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata"
+        got.buy_price.currency.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata"
     )
     assert got.buy_price.currency.meta.type == "currency"
     assert got.buy_price.currency.meta.media_type == "application/json"
