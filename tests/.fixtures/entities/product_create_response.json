@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "href": "https://online.moysklad.ru/api/remap/1.2/entity/product/04996e84-29a1-11e6-8a84-bae500000002",
+    "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/product/metadata",
+    "type": "product",
+    "mediaType": "application/json"
+  },
+  "id": "04996e84-29a1-11e6-8a84-bae500000002",
+  "accountId": "2aa3f5df-296b-11e6-8a84-bae500000001",
+  "owner": {
+    "meta": {
+      "href": "https://online.moysklad.ru/api/remap/1.2/entity/employee/faba7f37-2e58-11e6-8a84-bae500000028",
+      "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/employee/metadata",
+      "type": "employee",
+      "mediaType": "application/json"
+    }
+  },
+  "shared": false,
+  "group": {
+    "meta": {
+      "href": "https://online.moysklad.ru/api/remap/1.2/entity/group/f97aa1fb-2e58-11e6-8a84-bae500000002",
+      "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/group/metadata",
+      "type": "group",
+      "mediaType": "application/json"
+    }
+  },
+  "images": {
+    "meta": {
+      "href": "https://online.moysklad.ru/api/remap/1.2/entity/product/04996e84-29a1-11e6-8a84-bae500000002/images",
+      "type": "image",
+      "mediaType": "application/json",
+      "size": 0,
+      "limit": 1000,
+      "offset": 0
+    }
+  },
+  "salePrices": [
+    {
+      "value": 346347237000,
+      "currency": {
+        "meta": {
+          "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/2b50da23-296b-11e6-8a84-bae500000055",
+          "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+          "type": "currency",
+          "mediaType": "application/json"
+        }
+      },
+      "priceType": {
+        "meta": {
+          "href": "https://online.moysklad.ru/api/remap/1.2/context/companysettings/pricetype/672559f1-cbf3-11e1-9eb9-889ffa6f49fd",
+          "type": "pricetype",
+          "mediaType": "application/json"
+        },
+        "id": "672559f1-cbf3-11e1-9eb9-889ffa6f49fd",
+        "name": "Цена продажи",
+        "externalCode": "cbcf493b-55bc-11d9-848a-00112f43529a"
+      }
+    },
+    {
+      "value": 100,
+      "currency": {
+        "meta": {
+          "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/2b50da23-296b-11e6-8a84-bae500000055",
+          "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+          "type": "currency",
+          "mediaType": "application/json"
+        }
+      },
+      "priceType": {
+        "meta": {
+          "href": "https://online.moysklad.ru/api/remap/1.2/context/companysettings/pricetype/672559f1-cbf3-11e1-9eb9-889ffa6f2222",
+          "type": "pricetype",
+          "mediaType": "application/json"
+        },
+        "id": "672559f1-cbf3-11e1-9eb9-889ffa6f2222",
+        "name": "Цена для друзей",
+        "externalCode": "cbcf493b-55bc-11d9-848a-00112f432222"
+      }
+    }
+  ],
+  "updated": "2016-06-03 18:37:02",
+  "name": "Мандарины",
+  "code": "00003",
+  "externalCode": "Cf0ehavIglre6sMX-J2rR2",
+  "archived": false,
+  "pathName": "",
+  "weight": 0,
+  "volume": 0,
+  "isSerialTrackable": false,
+  "trackingType": "NOT_TRACKED",
+  "vatEnabled": false,
+  "useParentVat": true
+}

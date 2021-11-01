@@ -2,6 +2,7 @@ import typing
 
 from py_moysklad.entities.meta_entity import MetaEntity
 from py_moysklad.responses.list_entity import ListEntity
+from py_moysklad.utils.exclude_optional_fields import exclude_optional_dict
 
 if typing.TYPE_CHECKING:
     from py_moysklad.client import ApiClient
@@ -36,29 +37,34 @@ class BaseEndpoint:
             raise Exception()  # FIXME: add custom exception
         return api.client
 
+    @staticmethod
+    def get_id(entity: typing.Union[MetaEntity, str]) -> str:
+        if isinstance(entity, MetaEntity):
+            entity_id = entity.id
+        elif isinstance(entity, str):
+            entity_id = entity
+        else:
+            raise Exception()  # FIXME: add custom exception
+        return entity_id
+
 
 class RetrieveMixin(BaseEndpoint):
-    def get(self, entity_id: str = None):
-        if entity_id is None:
+    def get(self, entity: typing.Union[MetaEntity, str] = None):
+        if entity is None:
             response = self.client.get(endpoint=self.get_endpoint("list"))
             return ListEntity[self.get_entity_class()](**response)
+        entity_id = self.get_id(entity)
         response = self.client.get(endpoint=self.get_endpoint("retrieve").format(id=entity_id))
         return self.get_entity_class()(**response)
 
 
 class CreateMixin(BaseEndpoint):
-    def create(self, body: dict):
-        response = self.client.post(endpoint=self.get_endpoint("create"), body=body)
+    def create(self, entity: MetaEntity):
+        response = self.client.post(endpoint=self.get_endpoint("create"), data=exclude_optional_dict(entity))
         return self.get_entity_class()(**response)
 
 
 class DeleteMixin(BaseEndpoint):
-    def delete(self, entity: typing.Union[MetaEntity, int]) -> None:
-        if isinstance(entity, MetaEntity):
-            entity_id = entity.id
-        elif isinstance(entity, int):
-            entity_id = entity
-        else:
-            raise Exception()  # FIXME: add custom exception
-
+    def delete(self, entity: typing.Union[MetaEntity, str]) -> None:
+        entity_id = self.get_id(entity)
         return self.client.delete(endpoint=self.get_endpoint("delete").format(id=entity_id))
