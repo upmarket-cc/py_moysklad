@@ -46,32 +46,32 @@ class ProductPack(BaseModel):
 
 
 class Product(AbstractProduct):
-    owner: Employee
-    shared: bool
-    group: Group
-    # sync_id: str
-    updated: datetime
-    external_code: str
-    archived: bool
-    path_name: str
+    owner: Optional[Employee]
+    shared: Optional[bool]
+    group: Optional[Group]
+    # sync_id: Optional[str]
+    updated: Optional[datetime]
+    external_code: Optional[str]
+    archived: Optional[bool]
+    path_name: Optional[str]
     images: Optional[ListEntity[Image]]
     supplier: Optional[Agent]
     attributes: Optional[List[Attribute]]
-    # country: Country
-    article: str
+    # country: Optional[Country]
+    article: Optional[str]
     tobacco: Optional[bool]
-    weight: Decimal
-    volume: Decimal
+    weight: Optional[Decimal]
+    volume: Optional[Decimal]
     packs: Optional[List[ProductPack]]
     alcoholic: Optional[AlcoholEntity]
-    variants_count: int
+    variants_count: Optional[int]
     is_serial_trackable: Optional[bool]
     weighed: Optional[bool]
     things: Optional[List[str]]
-    # minimum_balance: Decimal
-    # ppe_type: str
-    # partial_disposal: bool
+    # minimum_balance: Optional[Decimal]
+    # ppe_type: Optional[str]
+    # partial_disposal: Optional[bool]
     tracking_type: Optional[TrackingType]
-    # tnved: str
-    # payment_item_type: GoodPaymentItemType
-    # tax_system: GoodTaxSystem
+    # tnved: Optional[str]
+    # payment_item_type: Optional[GoodPaymentItemType]
+    # tax_system: Optional[GoodTaxSystem]

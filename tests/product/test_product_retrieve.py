@@ -246,7 +246,7 @@ def test_serialize_barcodes(client, mock_http_client, read_fixture):
     assert got.barcodes[0].value == "20000000"
 
 
-def test_2(client, mock_http_client, read_fixture):
+def test_get_from_string_uuid(client, mock_http_client, read_fixture):
     mock_http_client.get.return_value = read_fixture("entities/product")
 
     got = client.entity().product().get("d950551c-2c7f-11e6-8a84-bae50000000b")
@@ -255,12 +255,12 @@ def test_2(client, mock_http_client, read_fixture):
     assert got.id == "d950551c-2c7f-11e6-8a84-bae50000000b"
 
 
-def test_3(client, mock_http_client, read_fixture):
+def test_get_from_entity_id(client, mock_http_client, read_fixture):
     fixture = read_fixture("entities/product")
     mock_http_client.get.return_value = fixture
 
     product = Product(**fixture)
-    got = client.entity().product().get(product.id)
+    got = client.entity().product().get(product)
 
     mock_http_client.get.assert_called_with("localhost/products/d950551c-2c7f-11e6-8a84-bae50000000b", params=None)
     assert got.id == "d950551c-2c7f-11e6-8a84-bae50000000b"
