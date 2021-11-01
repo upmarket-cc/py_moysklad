@@ -22,11 +22,10 @@ def test_serialize_context(client, mock_http_client, read_fixture):
     got = client.entity().product().get()
 
     mock_http_client.get.assert_called_with("localhost/products", params=None)
+    assert got.context.employee.meta.href == "https://online.moysklad.ru/api/remap/1.2/context/employee"
     assert (
-            got.context.employee.meta.href
-            == "https://online.moysklad.ru/api/remap/1.2/context/employee"
+        got.context.employee.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/employee/metadata"
     )
-    assert got.context.employee.meta.metadata_href == "https://online.moysklad.ru/api/remap/1.2/entity/employee/metadata"
     assert got.context.employee.meta.type == "employee"
     assert got.context.employee.meta.media_type == "application/json"
 

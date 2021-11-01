@@ -58,6 +58,15 @@ class RetrieveMixin(BaseEndpoint):
         return self.get_entity_class()(**response)
 
 
+class UpdateMixin(BaseEndpoint):
+    def update(self, entity: typing.Union[MetaEntity, str] = None):
+        entity_id = self.get_id(entity)
+        response = self.client.put(
+            endpoint=self.get_endpoint("update").format(id=entity_id), data=exclude_optional_dict(entity)
+        )
+        return self.get_entity_class()(**response)
+
+
 class CreateMixin(BaseEndpoint):
     def create(self, entity: MetaEntity):
         response = self.client.post(endpoint=self.get_endpoint("create"), data=exclude_optional_dict(entity))
