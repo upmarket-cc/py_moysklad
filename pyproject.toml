@@ -50,7 +50,7 @@ flake8-tidy-imports = "*"
 flake8-quotes = "*"
 flake8-variables-names = "*"
 flake8-simplify = "*"
-pytest-httpx = "^0.14.0"
+pytest-httpx = "^0.20.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
